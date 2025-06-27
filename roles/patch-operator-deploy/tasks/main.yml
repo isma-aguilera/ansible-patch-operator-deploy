@@ -1,0 +1,25 @@
+# tasks file for patch-operator-deploy
+- name: Ensure rendered directory exists
+  file:
+    path: rendered
+    state: directory
+
+- name: Render Namespace
+  template:
+    src: namespace.yaml.j2
+    dest: rendered/namespace.yaml
+
+- name: Render OperatorGroup
+  template:
+    src: operatorgroup.yaml.j2
+    dest: rendered/operatorgroup.yaml
+
+- name: Render Subscription
+  template:
+    src: subscription.yaml.j2
+    dest: rendered/subscription.yaml
+
+- name: Apply Argo CD AppProject
+  kubernetes.core.k8s:
+    state: present
+    definition: "{{ lookup('file', 'files/patch-operator-project.yaml') | from_yaml }}"

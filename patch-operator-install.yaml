@@ -1,0 +1,5 @@
+- name: Deploy Patch Operator
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - patch-operator-deploy

@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: patch-operator
+  namespace: openshift-gitops
+spec:
+  project: '{{ argo_project }}'
+  source:
+    repoURL: '{{ repo_url }}'
+    path: '{{ repo_path }}'
+    targetRevision: '{{ repo_revision }}'
+    directory:
+      recurse: true
+  destination:
+    namespace: '{{ destination_namespace }}'
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+    automated: 
+      prune: true
+      selfHeal: true
+      

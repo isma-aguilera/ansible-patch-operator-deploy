@@ -1,0 +1,9 @@
+---
+# defaults file for patch-operator-deploy
+argo_project: default
+repo_url: https://github.com/isma-aguilera/ansible-patch-operator-deploy
+repo_path: rendered
+repo_revision: main
+release_name: patch-operator
+destination_namespace: patch-operator
+
