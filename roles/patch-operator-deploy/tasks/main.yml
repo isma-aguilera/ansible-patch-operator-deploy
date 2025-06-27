@@ -22,4 +22,4 @@
 - name: Apply Argo CD AppProject
   kubernetes.core.k8s:
     state: present
-    definition: "{{ lookup('file', 'files/patch-operator-project.yaml') | from_yaml }}"
+    definition: "{{ lookup('template', 'templates/patch-operator-project.yaml.j2') | from_yaml }}"
