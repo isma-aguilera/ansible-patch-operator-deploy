@@ -4,14 +4,22 @@ argo_project: default
 repo_url: https://github.com/isma-aguilera/ansible-patch-operator-deploy
 repo_path: rendered
 repo_revision: main
+namespace_argocd: openshift-gitops
 destination_namespace: patch-operator
+namespace_patch_operator: patch-operator
 
 # subscrition
 channel: alpha
 source: community-operators
-namespace: openshift-gitops
 release_name: patch-operator
 operator_name: patch-operator
 source_namespace: openshift-marketplace
 Approval: Manual
+
+# subscription.spec.cconfig.resources
+resources_limits_cpu: 400m
+resources_limits_memory: 1Gi
+resources_requests_cpu: 100m
+resources_requests_memory: 512Mi
+
 

@@ -2,10 +2,19 @@ apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
   name: patch-operator
-  namespace: openshift-gitops
+  namespace: patch-operator
 spec:
   name: patch-operator
   installPlanApproval: Manual
   channel: alpha
   source: community-operators
+  package: patch-operator
   sourceNamespace: openshift-marketplace
+  config:
+    resources:
+      limits:
+        cpu: 400m
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 512Mi
